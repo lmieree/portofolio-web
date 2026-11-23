@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dimas Ian Ibrahim</title>
+<meta name="description" content="Portofolio Dimas Ian Ibrahim, S.Kom. — Web Developer (Frontend & Backend) dan UI/UX Designer di Surabaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE  bold personal poster for a young developer: loud, energetic, still precise
+   IDEA   a developer's console at night with a red signal light: code window, terminal type, stickers on a laptop lid
+   PICTURE giant name + live NutriBot app window with floating tech stickers, cursor-lit grid behind
+   COLOUR night #0b0c0e dominant, signal red #ff2e1f, white; acid yellow #e4ff3a as rare sticker accent
+   TYPE   Inter Tight 900 poster name + Inter body, JetBrains Mono for code bits
+   LAYOUT laptop: huge name full width, text left / window right; phone: name, window, buttons stacked */
+:root{color-scheme:dark;--bg:#0b0c0e;--bg2:#131519;--bg3:#1b1e23;--ink:#f4f5f6;--mute:#9aa3ad;--line:#262a30;--red:#ff2e1f;--red2:#ff5a3c;--acid:#e4ff3a;--paper:#f4f5f6;--pink:#2a1210}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;letter-spacing:-.03em;line-height:1.02;margin:0;text-wrap:balance}
+h2{font-size:clamp(36px,5.5vw,68px);font-weight:800}
+h3{font-size:21px;font-weight:700;letter-spacing:-.015em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{position:relative;padding-block:clamp(64px,8vw,120px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.mono{font-family:"JetBrains Mono",monospace}
+.red{color:var(--red)}
+:focus-visible{outline:3px solid var(--acid);outline-offset:3px}
+
+/* progress + nav */
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),var(--acid));z-index:50}
+nav{position:sticky;top:0;z-index:40;background:rgba(11,12,14,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(5vw,16px);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font:800 19px "Inter Tight",sans-serif;text-decoration:none}
+.logo i{width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 16px var(--red);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 2px var(--red)}}
+.links{display:flex;gap:2px;flex-wrap:wrap}
+.links a{padding:8px 12px;border-radius:99px;text-decoration:none;font-weight:500;font-size:15px;color:var(--mute);transition:.2s}
+.links a:hover{color:var(--ink)}
+.links a.on{color:#0b0c0e;background:var(--ink)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:99px;font:600 16px Inter,sans-serif;text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;overflow:hidden;transition:transform .2s,background .2s,color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.hot{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 10px 30px -10px var(--red)}
+.btn.hot:hover{box-shadow:0 16px 40px -8px var(--red)}
+.btn svg{width:18px;height:18px;transition:transform .2s}
+.btn:hover svg{transform:translateX(4px)}
+
+/* hero */
+.hero{overflow:hidden;padding-top:clamp(40px,6vw,80px)}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 80%);opacity:.55;pointer-events:none}
+.glow{position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,46,31,.33),transparent 62%);left:var(--x,70%);top:var(--y,30%);transform:translate(-50%,-50%);pointer-events:none;transition:left .25s ease-out,top .25s ease-out}
+.hero .wrap{position:relative}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--bg2);font-size:14px;font-weight:500}
+.status b{width:8px;height:8px;border-radius:50%;background:#2bd67b;box-shadow:0 0 10px #2bd67b}
+.name{font-size:clamp(56px,12.5vw,176px);font-weight:900;letter-spacing:-.055em;line-height:.88;margin:26px 0 0}
+.name .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.name .dot{color:var(--red)}
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,48px)}
+.role{font:700 clamp(22px,2.6vw,32px)/1.2 "Inter Tight",sans-serif;letter-spacing:-.02em;min-height:1.3em}
+.role .caret{display:inline-block;width:3px;height:1em;background:var(--red);margin-left:4px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{font-size:18px;color:var(--mute);margin:16px 0 28px;max-width:32em}
+.lead b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:36px}
+.stat{padding:16px;border-radius:16px;background:var(--bg2);border:1px solid var(--line)}
+.stat strong{display:block;font:800 28px/1 "Inter Tight",sans-serif;letter-spacing:-.03em}
+.stat small{color:var(--mute);font-size:13px}
+
+/* app window */
+.stage{position:relative;padding:22px 8px 8px}
+.win{position:relative;background:#101215;border-radius:20px;overflow:hidden;border:1px solid #2b3037;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 6px rgba(255,255,255,.03),0 0 80px -20px rgba(255,46,31,.35);transform:perspective(1200px) rotateY(var(--ry,-6deg)) rotateX(var(--rx,3deg));transition:transform .3s ease-out}
+.bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#16191d;font:13px "JetBrains Mono",monospace;color:#8a949e;border-bottom:1px solid #23272d}
+.bar i{width:11px;height:11px;border-radius:50%;background:#3a4047}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app{display:grid;grid-template-columns:minmax(0,1fr) 190px}
+.chat{display:flex;flex-direction:column;height:400px;border-right:1px solid #23272d}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:88%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:pop .3s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}}
+.m.bot{background:#1e2227;border-top-left-radius:4px}
+.m.me{background:var(--red);color:#fff;align-self:flex-end;border-top-right-radius:4px}
+.m.typing{color:#8a949e}
+.m.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8a949e;margin:0 2px;animation:dots 1s infinite}
+.m.typing span:nth-child(2){animation-delay:.15s}.m.typing span:nth-child(3){animation-delay:.3s}
+@keyframes dots{50%{transform:translateY(-4px);opacity:.4}}
+.chips{display:flex;gap:6px;padding:0 16px 10px;flex-wrap:wrap}
+.chips button{font:500 13px Inter,sans-serif;padding:6px 12px;min-height:34px;border-radius:99px;border:1px solid #333941;background:transparent;color:#cfd6dc;cursor:pointer;transition:.2s}
+.chips button:hover{border-color:var(--red);background:var(--pink);color:#fff}
+.ask{display:flex;gap:8px;padding:12px;border-top:1px solid #23272d}
+.ask input{flex:1;font:16px Inter,sans-serif;padding:10px 14px;border-radius:99px;border:1px solid #333941;background:#0b0c0e;color:#fff}
+.ask button{width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .2s}
+.ask button:hover{transform:rotate(-20deg) scale(1.08)}
+.ask button svg{width:18px;height:18px}
+.side{padding:18px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,#121519,#101215)}
+.side h4{margin:0;font:500 13px Inter,sans-serif;color:#8a949e}
+.food{font:700 18px "Inter Tight",sans-serif}
+.kcal{font:800 46px/1 "Inter Tight",sans-serif;letter-spacing:-.04em;color:#fff}
+.kcal small{font-size:13px;color:#8a949e;font-weight:500;letter-spacing:0}
+.mac{display:grid;gap:10px}
+.mac div{font-size:13px}
+.mac p{display:flex;justify-content:space-between}
+.mac p b{font-weight:600;white-space:nowrap}
+.track{height:7px;border-radius:9px;background:#23272d;margin-top:5px;overflow:hidden}
+.track i{display:block;height:100%;border-radius:9px;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.sticker{position:absolute;z-index:2;font:700 14px "JetBrains Mono",monospace;padding:8px 14px;border-radius:12px;box-shadow:0 12px 24px -8px rgba(0,0,0,.7);animation:float 5s ease-in-out infinite;white-space:nowrap}
+.s1{top:0;left:-8px;background:var(--acid);color:#0b0c0e;transform:rotate(-8deg)}
+.s2{top:34%;right:-14px;background:var(--red);color:#fff;transform:rotate(6deg);animation-delay:-1.6s}
+.s3{bottom:-10px;left:22%;background:#fff;color:#0b0c0e;transform:rotate(-4deg);animation-delay:-3s}
+@keyframes float{50%{translate:0 -10px}}
+.note{font-size:13px;color:var(--mute);margin-top:18px}
+
+/* marquee */
+.mqwrap{overflow:hidden;padding-block:14px}
+.marquee{background:var(--red);color:#fff;overflow:hidden;transform:rotate(-1.5deg);margin:0 -2vw;border-block:2px solid #0b0c0e}
+.marquee .track2{display:flex;width:max-content;animation:slide 30s linear infinite}
+.marquee span{font:800 clamp(22px,3vw,36px)/1 "Inter Tight",sans-serif;letter-spacing:-.02em;padding:18px 22px;display:flex;align-items:center;gap:44px;white-space:nowrap}
+.marquee span::after{content:"✦";color:#0b0c0e;font-size:.7em}
+.marquee:hover .track2{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* section heads */
+.head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px 56px;align-items:end;margin-bottom:48px}
+.head p{color:var(--mute);font-size:17px}
+.kick{display:inline-flex;align-items:center;gap:10px;font:500 14px "JetBrains Mono",monospace;color:var(--red);margin-bottom:16px}
+.kick::before{content:"";width:28px;height:2px;background:var(--red)}
+
+/* about (light band) */
+.light{background:var(--paper);color:#0b0c0e}
+.light .head p,.light .mute{color:#4b525a}
+.about{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.big{font:600 clamp(24px,3vw,38px)/1.25 "Inter Tight",sans-serif;letter-spacing:-.025em}
+.big .hl{background:linear-gradient(transparent 58%,var(--acid) 58%);padding:0 2px}
+.big .rd{color:var(--red)}
+.facts{display:grid;gap:10px}
+.fact{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;padding:16px;border-radius:16px;background:#fff;border:1px solid #dcdfe3;transition:transform .2s,box-shadow .2s}
+.fact:hover{transform:translateX(6px);box-shadow:-6px 6px 0 var(--red)}
+.fact .ic{width:44px;height:44px;border-radius:12px;background:#0b0c0e;color:#fff;display:grid;place-items:center}
+.fact .ic svg{width:20px;height:20px}
+.fact small{display:block;color:#5b636c;font-size:13px}
+.fact strong{font-weight:600}
+
+/* cards with spotlight */
+.spot{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:border-color .3s,transform .3s}
+.spot::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,46,31,.16),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.spot:hover{border-color:#3a3f47}
+.spot:hover::before{opacity:1}
+.spot>*{position:relative}
+
+/* experience */
+.exp{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:0}
+.exp .l{padding:clamp(24px,3vw,40px);background:var(--red);color:#fff;display:flex;flex-direction:column;gap:12px;justify-content:space-between}
+.exp .l h3{font-size:clamp(26px,3vw,36px);font-weight:800}
+.exp .co{font:700 20px "Inter Tight",sans-serif}
+.pill{display:inline-block;align-self:start;font:600 13px Inter,sans-serif;padding:6px 12px;border-radius:99px;background:#0b0c0e;color:#fff}
+.exp .r{padding:clamp(24px,3vw,40px)}
+.exp ul{margin:0;padding:0;list-style:none;display:grid;gap:18px}
+.exp li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;font-size:17px}
+.exp li b{width:36px;height:36px;border-radius:10px;background:var(--bg3);display:grid;place-items:center;font:600 14px "JetBrains Mono",monospace;color:var(--red)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.tags span{font:500 13px "JetBrains Mono",monospace;padding:6px 12px;border-radius:99px;background:var(--bg3);border:1px solid var(--line);transition:.2s}
+.tags span:hover{background:var(--acid);color:#0b0c0e;border-color:var(--acid)}
+
+/* project */
+.proj{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px}
+.proj .txt{padding:clamp(24px,3.5vw,48px);display:flex;flex-direction:column;gap:18px}
+.proj .txt h3{font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.03em}
+.proj .txt p{color:#b9c1ca;font-size:17px}
+.flow{padding:clamp(20px,3vw,36px);display:grid;gap:10px;align-content:start}
+.step{display:grid;grid-template-columns:48px minmax(0,1fr) 20px;gap:14px;align-items:center;padding:14px;border-radius:16px;background:var(--bg3);border:1px solid var(--line);cursor:pointer;transition:.25s;text-align:left;color:inherit;font:inherit;width:100%}
+.step:hover{border-color:#444a52;transform:translateX(4px)}
+.step.on{border-color:var(--red);background:var(--pink)}
+.step b{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#2a2f35;transition:.25s}
+.step.on b{background:var(--red);box-shadow:0 0 24px -4px var(--red)}
+.step b svg{width:22px;height:22px}
+.step strong{display:block;font-size:16px}
+.step small{color:#97a2ac;font-size:13px}
+.step .ar{color:#5a626b;transition:.25s}
+.step.on .ar{color:var(--red);transform:rotate(90deg)}
+.detail{padding:16px 18px;border-radius:14px;background:#0b0c0e;border:1px dashed #3a3f47;color:#d5dbe0;font-size:15px;min-height:4.6em}
+
+/* skills bento */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{font:500 15px Inter,sans-serif;min-height:46px;padding:0 18px;border-radius:99px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);cursor:pointer;transition:.2s}
+.filters button:hover{border-color:#555}
+.filters button[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.sk{padding:20px;display:flex;flex-direction:column;gap:18px;min-height:150px;transition:opacity .3s,transform .3s,border-color .3s,filter .3s}
+.sk:hover{transform:translateY(-6px) rotate(-1deg)}
+.sk.dim{opacity:.15;transform:scale(.95);filter:grayscale(1)}
+.sk .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 15px "JetBrains Mono",monospace;color:#0b0c0e}
+.sk strong{display:block;font:700 19px "Inter Tight",sans-serif}
+.sk small{color:var(--mute);font-size:13px}
+
+/* education */
+.edu{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+.edu .c{padding:clamp(24px,3vw,40px)}
+.yr{font:900 clamp(44px,7vw,92px)/.9 "Inter Tight",sans-serif;letter-spacing:-.05em;margin:18px 0 18px}
+.yr span{color:transparent;-webkit-text-stroke:1.5px #0b0c0e}
+.edu .uni{background:var(--acid);color:#0b0c0e;border:0}
+.edu .uni .mute{color:#3c4410}
+.lang{display:grid;gap:22px;margin-top:20px}
+.lang p{display:flex;justify-content:space-between;font-weight:600}
+.lang p span{color:var(--mute);font-weight:400}
+.meter{height:10px;border-radius:9px;background:var(--bg3);margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--red2));border-radius:9px}
+
+/* contact */
+.contact{background:var(--red);color:#fff;overflow:hidden}
+.contact h2{font-size:clamp(48px,9vw,128px);font-weight:900;letter-spacing:-.055em;line-height:.9}
+.contact h2 .o{color:transparent;-webkit-text-stroke:2px #fff}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:44px}
+.ways{display:grid;gap:10px;align-content:start}
+.way{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px;border-radius:18px;background:#0b0c0e;transition:transform .2s}
+.way:hover{transform:translateY(-3px) rotate(-.5deg)}
+.way .ic{width:48px;height:48px;border-radius:14px;background:#1e2227;display:grid;place-items:center}
+.way .ic svg{width:20px;height:20px}
+.way small{color:#8a949e;display:block;font-size:13px}
+.way a,.way .v{font-weight:600;overflow-wrap:anywhere;text-decoration:none}
+.copy{font:600 13px Inter,sans-serif;min-height:38px;padding:0 14px;border-radius:99px;border:1px solid #3a4047;background:transparent;color:#e3e7ea;cursor:pointer;transition:.2s}
+.copy:hover{background:#fff;color:#0b0c0e}
+.copy.ok{background:var(--acid);color:#0b0c0e;border-color:var(--acid)}
+form{display:grid;gap:12px;background:#0b0c0e;border-radius:22px;padding:24px}
+label{font-size:14px;color:#b6c0c9;display:grid;gap:6px}
+form input,form textarea{font:16px Inter,sans-serif;padding:13px 14px;border-radius:12px;border:1px solid #333941;background:#16191d;color:#fff;resize:vertical;transition:border-color .2s}
+form input:focus,form textarea:focus{border-color:var(--red);outline:none}
+.out{font-size:14px;min-height:1.4em}
+footer{background:#0b0c0e;color:#8a949e;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:24px max(5vw,16px)}
+
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+@media(max-width:1020px){.app{grid-template-columns:minmax(0,1fr)}.chat{border-right:0;border-bottom:1px solid #23272d;height:340px}.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);align-items:start}}
+@media(max-width:880px){.split,.about,.head,.proj,.edu,.cgrid,.exp{grid-template-columns:minmax(0,1fr)}.win{--ry:0deg!important;--rx:0deg!important}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sk{min-height:0;padding:16px}.links{width:100%;overflow-x:auto;flex-wrap:nowrap}.links a{flex:none}.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:last-child{grid-column:1/-1}.side{grid-template-columns:minmax(0,1fr)}.way{grid-template-columns:48px minmax(0,1fr)}.way .copy{grid-column:2;justify-self:start}.s2{right:0}.name .o{-webkit-text-stroke:1.5px var(--ink)}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<nav aria-label="Navigasi utama">
+  <div class="wrap">
+    <a class="logo" href="#home"><i></i>dimas.ian</a>
+    <div class="links" id="links">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#project">Proyek</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#education">Pendidikan</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="band hero">
+  <div class="gridbg"></div>
+  <div class="glow" id="glow"></div>
+  <div class="wrap">
+    <div class="status rise"><b></b>Terbuka untuk peluang kerja · Surabaya</div>
+    <h1 class="name rise" style="animation-delay:.08s">Dimas <span class="o">Ian</span><br>Ibrahim<span class="dot">.</span></h1>
+
+    <div class="split">
+      <div class="rise" style="animation-delay:.18s">
+        <p class="role">Saya seorang <span class="red" id="role">Web Developer</span><span class="caret"></span></p>
+        <p class="lead">Lulusan <b>S1 Teknik Informatika</b> yang merancang antarmuka di <b>Figma</b> lalu membangunnya jadi aplikasi web responsif dengan <b>PHP, Laravel, dan MySQL</b>, dari tampilan sampai database.</p>
+        <div class="cta">
+          <a class="btn hot" href="#project">Lihat proyek saya
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#contact">Hubungi saya</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>S.Kom.</strong><small>Teknik Informatika</small></div>
+          <div class="stat"><strong>5</strong><small>Bahasa pemrograman</small></div>
+          <div class="stat"><strong>Full&#8209;stack</strong><small>Frontend &amp; backend</small></div>
+        </div>
+      </div>
+
+      <div class="stage rise" style="animation-delay:.28s" id="stage">
+        <span class="sticker s1">&lt;Laravel /&gt;</span>
+        <span class="sticker s2">NLP ✦</span>
+        <span class="sticker s3">Figma → Code</span>
+        <div class="win" id="win" aria-label="Demo interaktif NutriBot">
+          <div class="bar"><i></i><i></i><i></i><span>nutribot.app — coba ketik makanan</span></div>
+          <div class="app">
+            <div class="chat">
+              <div class="msgs" id="msgs" aria-live="polite"></div>
+              <div class="chips" id="chips"></div>
+              <form class="ask" id="ask" style="background:none;border-radius:0;padding:12px;border-top:1px solid #23272d;display:flex">
+                <input id="q" autocomplete="off" placeholder="mis. nasi goreng" aria-label="Tanyakan makanan">
+                <button type="submit" aria-label="Kirim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </form>
+            </div>
+            <div class="side">
+              <div>
+                <h4>Hasil deteksi</h4>
+                <div class="food" id="fName">Nasi putih</div>
+                <div class="kcal" id="fKcal">130 <small>kkal/100 g</small></div>
+              </div>
+              <div class="mac" id="mac"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Demo konsep dari proyek tugas akhir; nilai gizi adalah perkiraan umum per 100 g, bukan keluaran model aslinya.</p>
+  </div>
+</header>
+
+<div class="mqwrap"><div class="marquee" aria-hidden="true"><div class="track2" id="mq"></div></div></div>
+
+<section id="about" class="band light">
+  <div class="wrap about">
+    <div>
+      <div class="kick">tentang saya</div>
+      <p class="big">Saya suka membuat produk digital yang <span class="hl">enak dipakai</span>. Keahlian utama saya ada di <span class="rd">Web Development</span>, frontend dan backend, serta <span class="rd">UI/UX Design</span>. Detail itu penting, dan kerja tim membuat hasilnya lebih baik.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 2 9 2 12 0v-5"/></svg></span><div><small>Pendidikan</small><strong>S1 Teknik Informatika, Untag Surabaya</strong></div></div>
+      <div class="fact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span><div><small>Stack utama</small><strong>PHP · Laravel · MySQL · JavaScript</strong></div></div>
+      <div class="fact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 5 12l7-7 7 7z"/><circle cx="12" cy="12" r="2"/></svg></span><div><small>Desain</small><strong>Figma · Canva · CorelDRAW</strong></div></div>
+      <div class="fact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><div><small>Bahasa</small><strong>Indonesia (native), Inggris (intermediate)</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="band">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="kick">pengalaman</div><h2>Dari Figma sampai <span class="red">live</span>.</h2></div>
+      <p>Pengalaman membangun website perusahaan bersama tim, dari desain antarmuka sampai kode yang tayang.</p>
+    </div>
+    <article class="spot exp">
+      <div class="l">
+        <span class="pill">Kerja Praktek</span>
+        <div><h3>Front-End Developer</h3><p class="co" style="margin-top:10px">PT. Javacosmic</p></div>
+      </div>
+      <div class="r">
+        <ul>
+          <li><b>01</b><span>Mengembangkan website company profile perusahaan dari tahap perancangan antarmuka hingga implementasi kode.</span></li>
+          <li><b>02</b><span>Menerjemahkan desain UI/UX dari Figma menjadi halaman web yang responsif, interaktif, dan optimal untuk pengguna.</span></li>
+          <li><b>03</b><span>Berkolaborasi dengan tim internal agar struktur frontend selaras dengan kebutuhan fungsional dan estetika perusahaan.</span></li>
+        </ul>
+        <div class="tags"><span>Figma</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive design</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="project" class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="kick">proyek unggulan · 2026</div><h2>Makanan masuk, <span class="red">gizi</span> keluar.</h2></div>
+      <p>Proyek tugas akhir yang saya kembangkan secara mandiri. Klik tiap tahap untuk melihat cara kerjanya.</p>
+    </div>
+    <div class="proj">
+      <div class="spot txt">
+        <span class="pill" style="background:var(--red)">Tugas Akhir · Full-stack · NLP</span>
+        <h3>Web Aplikasi Deteksi Nutrisi Makanan &amp; Chatbot Konsultan</h3>
+        <p>Aplikasi web full-stack yang mendeteksi kandungan nutrisi makanan dengan pendekatan Natural Language Processing, dilengkapi chatbot interaktif yang berperan sebagai konsultan nutrisi.</p>
+        <p>Saya merancang alur sistem dari frontend hingga pengolahan data di backend agar respons sistem cepat dan akurat.</p>
+        <div class="tags" style="margin-top:0"><span>NLP</span><span>Python</span><span>Chatbot</span><span>Full-stack</span></div>
+        <a class="btn" href="#home" style="align-self:start">Coba demonya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
+      <div class="spot flow" id="flow"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="kick">keahlian</div><h2>Peralatan <span class="red">tempur</span>.</h2></div>
+      <p>Bahasa pemrograman, framework, dan alat desain yang saya pakai. Pilih kategori untuk menyaring.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter keahlian"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="education" class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="kick">pendidikan</div><h2>Bekal <span class="red">akademik</span>.</h2></div>
+      <p>Latar belakang kuliah dan kemampuan berkomunikasi.</p>
+    </div>
+    <div class="edu">
+      <div class="spot c uni">
+        <span class="pill">Sarjana Komputer (S.Kom.)</span>
+        <div class="yr">2022<span>–</span>2026</div>
+        <h3 style="font-size:clamp(22px,2.6vw,30px)">Universitas 17 Agustus 1945 Surabaya</h3>
+        <p class="mute" style="margin-top:6px;font-weight:500">S1 Teknik Informatika</p>
+      </div>
+      <div class="spot c">
+        <h3>Bahasa</h3>
+        <div class="lang">
+          <div><p>Indonesia <span>Native</span></p><div class="meter"><i style="width:100%"></i></div></div>
+          <div><p>Inggris <span>Intermediate</span></p><div class="meter"><i style="width:60%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="band contact">
+  <div class="wrap">
+    <h2>Mari bekerja<br><span class="o">sama</span>.</h2>
+    <p style="font-size:19px;margin-top:22px;max-width:34em">Butuh web developer atau UI/UX designer untuk tim Anda? Saya siap ngobrol.</p>
+    <div class="cgrid">
+      <div class="ways">
+        <div class="way">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div><small>Email</small><a href="mailto:dimasianibrahim10@gmail.com">dimasianibrahim10@gmail.com</a></div>
+          <button class="copy" data-v="dimasianibrahim10@gmail.com">Salin</button>
+        </div>
+        <div class="way">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><small>Telepon / WhatsApp</small><span class="v">0851-1757-1043</span></div>
+          <button class="copy" data-v="085117571043">Salin</button>
+        </div>
+        <div class="way">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></div>
+          <div><small>GitHub</small><a href="https://github.com/lmieree">github.com/lmieree</a></div>
+          <button class="copy" data-v="https://github.com/lmieree">Salin</button>
+        </div>
+      </div>
+      <form id="cf" novalidate>
+        <label for="cn">Nama<input id="cn" required placeholder="Nama Anda"></label>
+        <label for="ce">Email<input id="ce" type="email" required placeholder="nama@perusahaan.com"></label>
+        <label for="cm">Pesan<textarea id="cm" rows="4" required placeholder="Ceritakan proyek atau posisi yang Anda tawarkan"></textarea></label>
+        <button class="btn hot" type="submit" style="justify-self:start">Siapkan pesan
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="out" id="out" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Dimas Ian Ibrahim, S.Kom.</span><span>Dibuat dengan HTML, CSS &amp; JavaScript · Surabaya</span></div></footer>
+
+<script>
+{
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* typing role */
+const ROLES=["Web Developer","Front-End Developer","Back-End Developer","UI/UX Designer"];
+const roleEl=document.getElementById('role');
+if(!reduce){let ri=0,ci=ROLES[0].length,del=true;
+  const tick=()=>{const w=ROLES[ri];
+    if(del){ci--;roleEl.textContent=w.slice(0,ci);if(ci===0){del=false;ri=(ri+1)%ROLES.length}setTimeout(tick,ci===0?250:45)}
+    else{ci++;roleEl.textContent=ROLES[ri].slice(0,ci);if(ci===ROLES[ri].length){del=true;setTimeout(tick,1800)}else setTimeout(tick,80)}};
+  setTimeout(tick,2200)}
+
+/* cursor glow + window tilt */
+const hero=document.getElementById('home'),glow=document.getElementById('glow'),win=document.getElementById('win');
+hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();glow.style.setProperty('--x',(e.clientX-r.left)+'px');glow.style.setProperty('--y',(e.clientY-r.top)+'px')});
+const stage=document.getElementById('stage');
+if(!reduce&&matchMedia('(min-width:881px)').matches){
+  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;win.style.setProperty('--ry',(x*10)+'deg');win.style.setProperty('--rx',(-y*8)+'deg')});
+  stage.addEventListener('pointerleave',()=>{win.style.setProperty('--ry','-6deg');win.style.setProperty('--rx','3deg')})}
+
+/* spotlight on cards */
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.spot');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+
+/* marquee */
+const MQ=["Web Development","UI/UX Design","Laravel","PHP","JavaScript","MySQL","Figma","Python","Front End","Back End"];
+document.getElementById('mq').innerHTML=[...MQ,...MQ].map(t=>`<span>${t}</span>`).join('');
+
+/* NutriBot demo */
+const FOODS={
+  "nasi putih":{n:"Nasi putih",k:130,p:2.7,c:28,f:0.3},
+  "nasi goreng":{n:"Nasi goreng",k:168,p:6.3,c:21,f:6.2},
+  "ayam goreng":{n:"Ayam goreng",k:260,p:27,c:8,f:14},
+  "tempe":{n:"Tempe",k:192,p:20,c:8,f:11},
+  "tahu":{n:"Tahu",k:76,p:8,c:1.9,f:4.8},
+  "telur":{n:"Telur rebus",k:155,p:13,c:1.1,f:11},
+  "pisang":{n:"Pisang",k:89,p:1.1,c:23,f:0.3},
+  "bakso":{n:"Bakso",k:202,p:12,c:12,f:11}
+};
+const msgs=document.getElementById('msgs'),q=document.getElementById('q');
+const add=(t,who,html)=>{const d=document.createElement('div');d.className='m '+who;if(html)d.innerHTML=t;else d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
+const countTo=(el,to)=>{const from=parseInt(el.textContent)||0,t0=performance.now(),d=reduce?0:600;
+  const step=now=>{const k=d?Math.min(1,(now-t0)/d):1;el.firstChild.nodeValue=Math.round(from+(to-from)*(1-(1-k)**3))+' ';if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)};
+const show=f=>{
+  document.getElementById('fName').textContent=f.n;
+  countTo(document.getElementById('fKcal'),f.k);
+  const rows=[["Protein",f.p,30,"#2bd67b"],["Karbohidrat",f.c,40,"#e4ff3a"],["Lemak",f.f,20,"#ff2e1f"]];
+  document.getElementById('mac').innerHTML=rows.map(r=>`<div><p>${r[0]}<b>${r[1]} g</b></p><div class="track"><i style="width:0;background:${r[3]}" data-w="${Math.min(100,r[1]/r[2]*100)}"></i></div></div>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('#mac i').forEach(i=>i.style.width=i.dataset.w+'%')));
+};
+const find=t=>{t=t.toLowerCase();const ks=Object.keys(FOODS);const k=ks.find(k=>t.includes(k))||ks.find(k=>t.includes(k.split(' ')[0]));return k?FOODS[k]:null};
+const tip=f=>f.p>=12?`${f.n} sumber protein yang baik 💪`:f.c>=20?`${f.n} kaya karbohidrat; imbangi dengan sayur dan lauk berprotein.`:`${f.n} tergolong ringan, cocok sebagai pelengkap.`;
+const ask=t=>{
+  if(!t.trim())return;
+  add(t,'me');
+  const w=add('<span></span><span></span><span></span>','bot typing',true);
+  setTimeout(()=>{
+    w.remove();
+    const f=find(t);
+    if(f){show(f);add(`Terdeteksi: ${f.n}. Sekitar ${f.k} kkal per 100 g, protein ${f.p} g, karbohidrat ${f.c} g, lemak ${f.f} g. ${tip(f)}`,'bot')}
+    else add('Hmm, makanan itu belum ada di data demo. Coba: nasi goreng, ayam goreng, tempe, tahu, telur, pisang, atau bakso.','bot');
+  },750);
+};
+add('Halo! Saya NutriBot 👋 Ketik makanan yang kamu makan, nanti saya perkirakan kandungan gizinya.','bot');
+show(FOODS['nasi putih']);
+const chips=document.getElementById('chips');
+chips.innerHTML=['Nasi goreng','Ayam goreng','Tempe','Pisang'].map(c=>`<button type="button">${c}</button>`).join('');
+chips.addEventListener('click',e=>{if(e.target.tagName==='BUTTON')ask('Berapa gizi '+e.target.textContent.toLowerCase()+'?')});
+document.getElementById('ask').addEventListener('submit',e=>{e.preventDefault();ask(q.value);q.value=''});
+
+/* project flow */
+const STEPS=[
+  ["Antarmuka pengguna","Frontend responsif","Pengguna mengetik nama makanan atau pertanyaan seputar gizi lewat antarmuka web yang responsif di desktop maupun ponsel.",'<path d="M3 5h18v12H3zM8 21h8M12 17v4"/>'],
+  ["Pemrosesan bahasa","Natural Language Processing","Teks pengguna diproses dengan pendekatan NLP untuk mengenali makanan yang dimaksud dan maksud pertanyaannya.",'<path d="M4 6h16M4 12h10M4 18h7"/>'],
+  ["Pengolahan data","Backend & database","Backend mencocokkan hasil pengenalan dengan data nutrisi dan menyiapkan respons secara cepat dan akurat.",'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>'],
+  ["Chatbot konsultan","Respons berbasis teks","Chatbot menyampaikan informasi nutrisi dan kesehatan kepada pengguna dalam bentuk percakapan yang mudah dipahami.",'<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/>']
+];
+const flow=document.getElementById('flow');
+flow.innerHTML=STEPS.map((s,i)=>`<button class="step${i?'':' on'}" data-i="${i}" type="button"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${s[3]}</svg></b><span><strong>${s[0]}</strong><small>${s[1]}</small></span><span class="ar">›</span></button>`).join('')+`<p class="detail" id="detail">${STEPS[0][2]}</p>`;
+let auto=0;const pick=i=>{flow.querySelectorAll('.step').forEach((x,j)=>x.classList.toggle('on',j===i));document.getElementById('detail').textContent=STEPS[i][2]};
+flow.addEventListener('click',e=>{const b=e.target.closest('.step');if(!b)return;clearInterval(timer);pick(+b.dataset.i)});
+const timer=reduce?0:setInterval(()=>{auto=(auto+1)%STEPS.length;pick(auto)},3500);
+
+/* skills */
+const SK=[
+  ["PHP","Bahasa pemrograman","lang","PHP","#8d9bff"],["JavaScript","Bahasa pemrograman","lang","JS","#f7df1e"],["Python","Bahasa pemrograman","lang","Py","#7fb6ff"],["C","Bahasa pemrograman","lang","C","#c3cbd4"],["C++","Bahasa pemrograman","lang","C++","#79a8e0"],
+  ["Laravel","Framework PHP","tool","Lv","#ff5a3c"],["MySQL","Database management","tool","SQL","#5fb6c9"],["Laragon","Local dev environment","tool","Lg","#47c79a"],["VS Code","Code editor","tool","VS","#4aa8ff"],["Google Colab","Notebook Python","tool","Co","#ffb23f"],
+  ["Figma","UI/UX design","design","Fg","#e4ff3a"],["Canva","Desain grafis","design","Cv","#40d6d6"],["CorelDRAW","Desain vektor","design","Cd","#7ee08a"]
+];
+const CATS=[["all","Semua"],["lang","Bahasa pemrograman"],["tool","Framework & tools"],["design","Desain & UI/UX"]];
+const grid=document.getElementById('grid'),fl=document.getElementById('filters');
+grid.innerHTML=SK.map(s=>`<div class="spot sk" data-c="${s[2]}"><span class="ic" style="background:${s[4]}">${s[3]}</span><span><strong>${s[0]}</strong><small>${s[1]}</small></span></div>`).join('');
+fl.innerHTML=CATS.map((c,i)=>`<button type="button" data-c="${c[0]}" aria-pressed="${i===0}">${c[1]}</button>`).join('');
+fl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;fl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));grid.querySelectorAll('.sk').forEach(s=>s.classList.toggle('dim',b.dataset.c!=='all'&&s.dataset.c!==b.dataset.c))});
+
+/* contact */
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.v);b.textContent='Tersalin ✓';b.classList.add('ok')}catch(err){b.textContent='Salin manual'}setTimeout(()=>{b.textContent='Salin';b.classList.remove('ok')},1800)}));
+document.getElementById('cf').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const n=document.getElementById('cn').value.trim(),em=document.getElementById('ce').value.trim(),m=document.getElementById('cm').value.trim(),out=document.getElementById('out');
+  if(!n||!em||!m){out.style.color='#ffb4a8';out.textContent='Lengkapi nama, email, dan pesan terlebih dahulu.';return}
+  const txt=`Halo Dimas,\n\n${m}\n\nSalam,\n${n} (${em})`;
+  out.style.color='#e4ff3a';
+  try{await navigator.clipboard.writeText(txt);out.textContent='Pesan sudah disalin. Tempel dan kirim ke dimasianibrahim10@gmail.com.'}
+  catch(err){out.textContent='Silakan kirim pesan Anda ke dimasianibrahim10@gmail.com.'}
+});
+
+/* scroll progress + active nav */
+const prog=document.getElementById('prog');
+const onScroll=()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'};
+addEventListener('scroll',onScroll,{passive:true});
+const links=[...document.querySelectorAll('#links a')];
+const spy=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+}
+</script>
+</body>
+</html>
